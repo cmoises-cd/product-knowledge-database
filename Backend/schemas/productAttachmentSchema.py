@@ -4,15 +4,16 @@ from datetime import datetime
 from .productDepartmentSchema import Department
 
 class AttachmentBase(BaseModel):
-    department_id: Optional[int] = None
     file_url: Optional[str] = None
     note: Optional[str] = None
 
+class AttachmentUpdate(AttachmentBase):
+    pass 
 class Attachment(AttachmentBase):
     id: int
     product_id: int
     created_at: Optional[datetime] = None
-    department: Optional[Department] = None
+    department: Department
     
     class Config:
         orm_mode = True
